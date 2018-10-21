@@ -2,7 +2,9 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python
+            - image: circleci/python:3.6
+    environment:
+            DISTRIB: "conda"
 
     steps:
       - checkout
