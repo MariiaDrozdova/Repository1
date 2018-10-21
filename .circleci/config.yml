@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Create HTML
-          command: sh run.sh
+          command: make
       #- run:
           #name: Start local docker cluster
           #command: graphcool local up
