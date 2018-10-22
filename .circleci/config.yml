@@ -1,21 +1,8 @@
 version: 2
 jobs:
   build:
-    docker:
-            - image: circleci/python:3.7.0
+    docker: # use the docker executor type; machine and macos executors are also supported
+      - image: circleci/node:4.8.2 # the primary container, where your job's commands are run
     steps:
-      - checkout
-      - run:
-           name: Create environment
-           command: |
-                   python3 -m venv venv
-                   . venv/bin/activate
-                   pip install -r requirements.txt
-      - run:
-          name: Start local docker cluster
-          command: |
-                #. venv/bin/activate
-                jupyter-nbconvert --execute Example.ipynb
-      #- run:
-          #name: Run tests
-#command: docker run -it --network container:a77d5a5e2299 -v $PWD:/ node bash test.sh
+      - checkout # check out the code in the project directory
+      - run: echo "hello world" # run the `echo` command
