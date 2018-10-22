@@ -44,9 +44,7 @@ jobs:
       # other common Python testing frameworks include pytest and nose
       # https://pytest.org
       #test
-      #
-      #
-      #
+
       # https://nose.readthedocs.io
       - run:
           name: run tests
