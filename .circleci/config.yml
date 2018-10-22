@@ -55,3 +55,9 @@ jobs:
       - store_artifacts:
           path: html_files
           destination: html_files
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
