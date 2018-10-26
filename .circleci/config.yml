@@ -45,12 +45,23 @@ jobs:
       # https://pytest.org
       # https://nose.readthedocs.io
       - run:
-          name: run tests
+          name: create html
           command: |
             . venv/bin/activate
             jupyter-nbconvert --execute Example.ipynb
             mkdir html_files
             mv Example.html html_files
+
+      - run:
+          name: kaggle
+          command: |
+            . venv/bin/activate
+            export KAGGLE_USERNAME
+            export KAGGLE_KEY
+            echo "{"username":\"${KAGGLE_USERNAME}\","key":\"${KAGGLE_KEY}\}" > kaggle.json
+            kaggle competitions download titanic
+            jupyter-nbconvert --execute Titanic.ipynb
+            kaggle competitions submit titanic -f output/submission.csv -m "Testing submissions"
 
       - store_artifacts:
           path: html_files
